@@ -1,0 +1,15 @@
+TODO
+
+Cannon: shoot(), move()
+Enemy: update(), other
+Entity: hint!
+Meteroid: Constructor, update(), other
+Missile: Constructor, update(), other
+Obstacle: Constructor, other
+Projectile: other
+Status: none
+Animation: test
+Game: all
+Launch: all
+
+no choice but to move the player on update() because the game will be repainted on update() anyways
