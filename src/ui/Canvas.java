@@ -1,4 +1,4 @@
-package ui.templates;
+package ui;
 
 public interface Canvas {
 	
