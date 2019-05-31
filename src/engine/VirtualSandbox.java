@@ -14,7 +14,21 @@ public abstract class VirtualSandbox {
 	protected List<Prop> props = new ArrayList<Prop>();
 
 	public VirtualSandbox(Dimention dimentions) {
-		this.boundaries = new Hitbox(new Coordinate(0, 0), dimentions);
+		boundaries = new Hitbox(new Coordinate(0, 0), dimentions);
 	}
+	
+	public final List<Prop> getProps() {
+		return props;
+	}
+	
+	public final void update() {
+		for (Prop prop : props) {
+			prop.update();
+		}
+	}
+	
+//	public final void setInputScheme(InputScheme scheme) {
+//		
+//	}
 	
 }

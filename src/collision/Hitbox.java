@@ -1,9 +1,10 @@
 package collision;
 
+import interfaces.Movable;
 import util.euclidiangeometry.Coordinate;
 import util.euclidiangeometry.Dimention;
 
-public class Hitbox {
+public class Hitbox implements Movable {
 
 	private Coordinate coordinate;
 	private Dimention dimention;
@@ -42,7 +43,8 @@ public class Hitbox {
 		return corners;
 	}
 	
-	public void moveTo(Coordinate coordinate) {
+	@Override
+	public void teleport(Coordinate coordinate) {
 		this.coordinate = coordinate;
 		initSidesAndCorners();
 	}
