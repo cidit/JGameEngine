@@ -1,4 +1,4 @@
-package collision;
+package engine;
 
 import interfaces.Movable;
 import util.euclidiangeometry.Coordinate;
