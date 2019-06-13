@@ -11,6 +11,7 @@ public abstract class Scene {
 	protected Hitbox boundaries;
 	
 	protected List<Prop> props = new ArrayList<Prop>();
+	protected List<Actor> actors = new ArrayList<Actor>();
 	
 	/**
 	 * Constructor

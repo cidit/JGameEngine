@@ -13,6 +13,7 @@ public abstract class Prop {
 
 	protected static long prop_count = 0;
 	public final long ID;
+	
 	protected Hitbox hitbox;
 
 	/**
@@ -25,6 +26,8 @@ public abstract class Prop {
 		ID = prop_count++;
 	}
 	
+	public abstract void move();
+	
 	/* GETTERS */
 	public final Coordinate coordinate() {
 		return hitbox.coordinate();
@@ -35,7 +38,7 @@ public abstract class Prop {
 	}
 
 	/* STATIC */
-	public final static int getPropCount() {
+	public final static long getPropCount() {
 		return prop_count;
 	}
 }

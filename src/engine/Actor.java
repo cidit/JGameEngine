@@ -1,12 +1,12 @@
 package engine;
 
-public abstract class Actor extends Prop {
+public abstract class Actor extends Prop { 
 	
-	public boolean 
-
+	boolean expired = false;
+	
 	protected Actor(Hitbox hitbox) {
 		super(hitbox);
 		// TODO Auto-generated constructor stub
 	}
-
+	
 }
