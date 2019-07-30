@@ -9,12 +9,12 @@ import engine.geom.Dimension;
  * @author cid
  *
  */
-public class HitBox {
+public class HitBox2D {
 
-	Coordinate coordinate;
-	Dimension dimension;
+	Coordinate center;
+	Dimension Surface;
 
-	int left, right, bottom, top;
+	float left, right, bottom, top;
 
 	/**
 	 * Constructor for a mutable hit box.
@@ -22,54 +22,54 @@ public class HitBox {
 	 * @param coordinate inferior left corner
 	 * @param dimension
 	 */
-	public HitBox(Coordinate coordinate, Dimension dimension) {
-		this.coordinate = coordinate;
-		this.dimension = dimension;
+	public HitBox2D(Coordinate coordinate, Dimension dimension) {
+		this.center = coordinate;
+		this.Surface = dimension;
 		updateSides();
 	}
 
 	public Coordinate getCoordinate() {
-		return coordinate;
+		return center;
 	}
 
 	public Dimension getDimension() {
-		return dimension;
+		return Surface;
 	}
 
-	public int getLeft() {
+	public float getLeft() {
 		return left;
 	}
 
-	public int getRight() {
+	public float getRight() {
 		return right;
 	}
 
-	public int getBottom() {
+	public float getBottom() {
 		return bottom;
 	}
 
-	public int getTop() {
+	public float getTop() {
 		return top;
 	}
 
 	public void move(Coordinate coordinate) {
-		this.coordinate = coordinate;
+		this.center = coordinate;
 		updateSides();
 	}
 
 	public void resize(Dimension dimention) {
-		this.dimension = dimention;
+		this.Surface = dimention;
 		updateSides();
 	}
 
 	private void updateSides() {
-		right = coordinate.getX() + dimension.getWidth();
-		left = coordinate.getX();
-		top = coordinate.getY() + dimension.getHeight();
-		bottom = coordinate.getY();
+		right = center.getX() + Surface.getWidth();
+		left = center.getX();
+		top = center.getY() + Surface.getHeight();
+		bottom = center.getY();
 	}
 
-	public boolean intersects(HitBox other) {
+	public boolean intersects(HitBox2D other) {
 		boolean c1, c2, c3, c4;
 		c1 = this.right >= other.left;
 		c2 = this.bottom <= other.top;
@@ -78,7 +78,7 @@ public class HitBox {
 		return (c1 && c2) || (c2 && c3) || (c3 && c4) || (c4 && c1);
 	}
 
-	public boolean contains(HitBox other) {
+	public boolean contains(HitBox2D other) {
 		boolean c1, c2, c3, c4;
 		c1 = this.right >= other.left;
 		c2 = this.bottom <= other.top;
