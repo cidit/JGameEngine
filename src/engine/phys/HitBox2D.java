@@ -12,7 +12,7 @@ import engine.geom.Dimension;
 public class HitBox2D {
 
 	Coordinate center;
-	Dimension Surface;
+	Dimension surface;
 
 	float left, right, bottom, top;
 
@@ -24,32 +24,32 @@ public class HitBox2D {
 	 */
 	public HitBox2D(Coordinate coordinate, Dimension dimension) {
 		this.center = coordinate;
-		this.Surface = dimension;
+		this.surface = dimension;
 		updateSides();
 	}
 
-	public Coordinate getCoordinate() {
+	public Coordinate getCenter() {
 		return center;
 	}
 
-	public Dimension getDimension() {
-		return Surface;
+	public Dimension getSurface() {
+		return surface;
+	}
+	
+	public float getRight() {
+		return right;
 	}
 
 	public float getLeft() {
 		return left;
 	}
-
-	public float getRight() {
-		return right;
+	
+	public float getTop() {
+		return top;
 	}
 
 	public float getBottom() {
 		return bottom;
-	}
-
-	public float getTop() {
-		return top;
 	}
 
 	public void move(Coordinate coordinate) {
@@ -58,15 +58,15 @@ public class HitBox2D {
 	}
 
 	public void resize(Dimension dimention) {
-		this.Surface = dimention;
+		this.surface = dimention;
 		updateSides();
 	}
 
 	private void updateSides() {
-		right = center.getX() + Surface.getWidth();
-		left = center.getX();
-		top = center.getY() + Surface.getHeight();
-		bottom = center.getY();
+		right = center.getX() + surface.getWidth() / 2;
+		left = center.getX() - surface.getWidth() / 2;
+		top = center.getY() + surface.getHeight() / 2;
+		bottom = center.getY() - surface.getHeight() / 2;
 	}
 
 	public boolean intersects(HitBox2D other) {
@@ -77,7 +77,7 @@ public class HitBox2D {
 		c4 = this.top >= other.bottom;
 		return (c1 && c2) || (c2 && c3) || (c3 && c4) || (c4 && c1);
 	}
-
+	
 	public boolean contains(HitBox2D other) {
 		boolean c1, c2, c3, c4;
 		c1 = this.right >= other.left;
