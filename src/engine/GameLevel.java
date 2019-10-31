@@ -2,6 +2,8 @@ package engine;
 
 import java.util.List;
 
+import engine.entities.GameObject;
+
 public class GameLevel {
 
 	List<GameObject> gameObjects;
